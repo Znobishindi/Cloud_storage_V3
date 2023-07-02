@@ -1,0 +1,62 @@
+version: "3.9"
+services:
+
+  frontcloud:
+    build:
+      context: ./netology-diplom-frontend
+      dockerfile: Dockerfile
+    container_name: frontcloud
+    image: cloud-storage-front:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - storage-net
+
+
+  cloud-storage:
+    depends_on:
+      - mysql
+    container_name: appcloud
+    build: ./
+    image: cloudstorageapp:latest
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/base
+    ports:
+      - "8090:8090"
+    expose:
+      - '8090'
+    networks:
+      - storage-net
+
+  liquibase:
+    build:
+      context: ./
+      dockerfile: Dockerfile-liquibase
+    container_name: liquibase
+    depends_on:
+       - mysql
+    volumes:
+      - ./src/main/resources/db/changelog/changeset/:/liquibase/changelog/
+
+    command: --url="jdbc:mysql://mysql:3306/base" --changelog-file=db.changelog-master-docker.xml --username=root --password=4444 update
+    networks:
+      - storage-net
+
+
+  mysql:
+    container_name: mysql
+    image: mysql:8.0.31
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'base'
+      MYSQL_ROOT_PASSWORD: '4444'
+    ports:
+      - '3308:3306'
+    networks:
+      - storage-net
+
+networks:
+  storage-net:
+    driver: bridge
+

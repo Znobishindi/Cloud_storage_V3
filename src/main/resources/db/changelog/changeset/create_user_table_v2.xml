@@ -1,0 +1,167 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1.0.0" author="denis.znobishin">
+        <createTable tableName="users">
+
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+                >
+            </column>
+
+            <column name="login" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+                >
+            </column>
+
+            <column name="password" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+                >
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+                >
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+                >
+            </column>
+
+            <column name="role" type="VARCHAR(128)" defaultValue="USER">
+                <constraints nullable="false"/>
+                >
+            </column>
+
+
+        </createTable>
+    </changeSet>
+
+<!--        <changeSet id="1.0.1" author="denis.znobishin">-->
+<!--            <createTable tableName="user_roles">-->
+
+<!--                <column name="id" type="BIGINT" autoIncrement="true">-->
+<!--                    <constraints primaryKey="true" nullable="false"/>-->
+<!--                    >-->
+<!--                </column>-->
+
+<!--                <column name="role" type="VARCHAR(128)" defaultValue="USER">-->
+<!--                    <constraints nullable="false"/>-->
+<!--                    >-->
+<!--                </column>-->
+
+<!--                <column name="user_id" type="BIGINT">-->
+<!--                    <constraints foreignKeyName="user_roles_fk" referencedTableName="users" referencedColumnNames="id"/>-->
+<!--                    >-->
+<!--                </column>-->
+
+<!--            </createTable>-->
+<!--        </changeSet>-->
+
+<!--    <changeSet id="1.2.1" author="denis.znobishin">-->
+<!--        <createTable tableName="roles">-->
+
+<!--            <column name="id" type="BIGINT" autoIncrement="true">-->
+<!--                <constraints primaryKey="true" nullable="false"/>-->
+<!--                >-->
+<!--            </column>-->
+
+<!--            <column name="role" type="VARCHAR(128)" defaultValue="USER">-->
+<!--                <constraints nullable="false"/>-->
+<!--                >-->
+<!--            </column>-->
+
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet id="1.1.0" author="denis.znobishin">-->
+<!--        <createTable tableName="user_roles">-->
+<!--            <column name="user_id" type="BIGINT">-->
+<!--            </column>-->
+<!--            <column name="role_id" type="BIGINT">-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+
+<!--        <changeSet id="1.1.1" author="denis.znobishin">-->
+<!--            <addForeignKeyConstraint baseTableName="user_roles"-->
+<!--                                     baseColumnNames="user_id"-->
+<!--                                     constraintName="user_roles_fk_user"-->
+<!--                                     onDelete="CASCADE"-->
+<!--                                     onUpdate="RESTRICT"-->
+<!--                                     referencedTableName="users"-->
+<!--                                     referencedColumnNames="id"/>-->
+<!--        </changeSet>-->
+
+<!--    <changeSet id="1.1.2" author="denis.znobishin">-->
+<!--        <addForeignKeyConstraint baseTableName="user_roles"-->
+<!--                                 baseColumnNames="role_id"-->
+<!--                                 constraintName="user_roles_fk_role"-->
+<!--                                 onDelete="CASCADE"-->
+<!--                                 onUpdate="RESTRICT"-->
+<!--                                 referencedTableName="roles"-->
+<!--                                 referencedColumnNames="id"/>-->
+<!--    </changeSet>-->
+
+    <changeSet id="1.0.3" author="denis.znobishin">
+        <createTable tableName="files">
+
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+                >
+            </column>
+
+            <column name="hash" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+                >
+            </column>
+
+            <column name="file_name" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+                >
+            </column>
+
+            <column name="type" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+                >
+            </column>
+
+            <column name="size" type="BIGINT">
+                <constraints nullable="false"/>
+                >
+            </column>
+
+            <column name="file_byte" type="MEDIUMBLOB">
+                <constraints nullable="false"/>
+                >
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+                >
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+                >
+            </column>
+
+            <column name="user_id" type="BIGINT">
+                <constraints foreignKeyName="user_files_fk" referencedTableName="users" referencedColumnNames="id"/>
+                >
+            </column>
+
+        </createTable>
+    </changeSet>
+
+    <!--    <changeSet id="1.0.8" author="denis.znobishin">-->
+    <!--        <addForeignKeyConstraint baseTableName="user_roles"-->
+    <!--                                 baseColumnNames="user_id"-->
+    <!--                                 constraintName="user_roles_fk"-->
+    <!--                                 referencedTableName="users"-->
+    <!--                                 referencedColumnNames="id"/>-->
+    <!--    </changeSet>-->
+
+</databaseChangeLog>
