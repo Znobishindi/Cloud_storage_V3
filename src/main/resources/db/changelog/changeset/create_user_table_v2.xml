@@ -40,70 +40,6 @@
         </createTable>
     </changeSet>
 
-<!--        <changeSet id="1.0.1" author="denis.znobishin">-->
-<!--            <createTable tableName="user_roles">-->
-
-<!--                <column name="id" type="BIGINT" autoIncrement="true">-->
-<!--                    <constraints primaryKey="true" nullable="false"/>-->
-<!--                    >-->
-<!--                </column>-->
-
-<!--                <column name="role" type="VARCHAR(128)" defaultValue="USER">-->
-<!--                    <constraints nullable="false"/>-->
-<!--                    >-->
-<!--                </column>-->
-
-<!--                <column name="user_id" type="BIGINT">-->
-<!--                    <constraints foreignKeyName="user_roles_fk" referencedTableName="users" referencedColumnNames="id"/>-->
-<!--                    >-->
-<!--                </column>-->
-
-<!--            </createTable>-->
-<!--        </changeSet>-->
-
-<!--    <changeSet id="1.2.1" author="denis.znobishin">-->
-<!--        <createTable tableName="roles">-->
-
-<!--            <column name="id" type="BIGINT" autoIncrement="true">-->
-<!--                <constraints primaryKey="true" nullable="false"/>-->
-<!--                >-->
-<!--            </column>-->
-
-<!--            <column name="role" type="VARCHAR(128)" defaultValue="USER">-->
-<!--                <constraints nullable="false"/>-->
-<!--                >-->
-<!--            </column>-->
-
-<!--        </createTable>-->
-<!--    </changeSet>-->
-<!--    <changeSet id="1.1.0" author="denis.znobishin">-->
-<!--        <createTable tableName="user_roles">-->
-<!--            <column name="user_id" type="BIGINT">-->
-<!--            </column>-->
-<!--            <column name="role_id" type="BIGINT">-->
-<!--            </column>-->
-<!--        </createTable>-->
-<!--    </changeSet>-->
-
-<!--        <changeSet id="1.1.1" author="denis.znobishin">-->
-<!--            <addForeignKeyConstraint baseTableName="user_roles"-->
-<!--                                     baseColumnNames="user_id"-->
-<!--                                     constraintName="user_roles_fk_user"-->
-<!--                                     onDelete="CASCADE"-->
-<!--                                     onUpdate="RESTRICT"-->
-<!--                                     referencedTableName="users"-->
-<!--                                     referencedColumnNames="id"/>-->
-<!--        </changeSet>-->
-
-<!--    <changeSet id="1.1.2" author="denis.znobishin">-->
-<!--        <addForeignKeyConstraint baseTableName="user_roles"-->
-<!--                                 baseColumnNames="role_id"-->
-<!--                                 constraintName="user_roles_fk_role"-->
-<!--                                 onDelete="CASCADE"-->
-<!--                                 onUpdate="RESTRICT"-->
-<!--                                 referencedTableName="roles"-->
-<!--                                 referencedColumnNames="id"/>-->
-<!--    </changeSet>-->
 
     <changeSet id="1.0.3" author="denis.znobishin">
         <createTable tableName="files">
@@ -156,12 +92,6 @@
         </createTable>
     </changeSet>
 
-    <!--    <changeSet id="1.0.8" author="denis.znobishin">-->
-    <!--        <addForeignKeyConstraint baseTableName="user_roles"-->
-    <!--                                 baseColumnNames="user_id"-->
-    <!--                                 constraintName="user_roles_fk"-->
-    <!--                                 referencedTableName="users"-->
-    <!--                                 referencedColumnNames="id"/>-->
-    <!--    </changeSet>-->
+
 
 </databaseChangeLog>
